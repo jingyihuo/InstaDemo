@@ -1,0 +1,31 @@
+<ul>
+    {% if request.user.is_authenticated %} 
+    <li>
+        <p>Hi, {{ request.user.username }}</p>
+    </li>  
+    
+    <li>
+        <a href="{% url 'logout' %}">logout</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="{% url 'login' %}">login</a>
+    </li>
+    <li>
+        <a href="{% url 'signup' %}">Signup</a>
+    </li> 
+    {% endif %}   
+</ul>
+
+
+<div>
+    <a href="{% url 'make_post' %}"> Make Post </a>
+</div>    
+
+<div>
+
+    {% for post in object_list %}
+        <img src="/{{post.image }}">
+    {% endfor %}
+
+</div>    
